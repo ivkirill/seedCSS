@@ -1,0 +1,22 @@
+// Groups
+// Generate groups class
+
+// Create simple group with defined gutter
+.make-group(@gutter: @grid-gutter-width; @outdent: @grid-outdent-width) {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left:  (@outdent / 2);
+  padding-right: (@outdent / 2);
+  
+  & > & {
+    margin-right: (@outdent / -2);
+    margin-left: (@outdent / -2);
+    margin-top: @margin-vertical-base;
+    margin-bottom: @margin-vertical-base;
+  }
+  
+  & > .grid {
+    margin-right: (@gutter / -2);
+    margin-left: (@gutter / -2);  
+  }
+}

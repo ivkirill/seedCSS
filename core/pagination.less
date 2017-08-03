@@ -1,0 +1,205 @@
+//
+// Pagination (multiple pages)
+// --------------------------------------------------
+.pagination {
+  display: inline-block;
+  margin-top: @line-height-base;
+  margin-bottom: @line-height-base;
+  border-radius: @border-radius-base;
+
+  ul& {
+    padding-left: 0;
+  }
+
+  > li {
+    display: inline; // Remove list-style and block-level defaults
+    > a,
+    > span {
+      position: relative;
+      float: left; // Collapse white-space
+      padding: @padding-vertical-base @padding-horizontal-base;
+      line-height: @line-height-base;
+      text-decoration: none;
+      color: @pagination-color;
+      background-color: @pagination-bg;
+      border: 1px solid @pagination-border;
+      margin-left: -1px;
+    }
+    &:first-child {
+      > a,
+      > span {
+        margin-left: 0;
+        .border-left-radius(@border-radius-base);
+      }
+    }
+    &:last-child {
+      > a,
+      > span {
+        .border-right-radius(@border-radius-base);
+      }
+    }
+  }
+
+  > li > a,
+  > li > span {
+    &:hover,
+    &:focus {
+      color: @pagination-color-hover;
+      background-color: @pagination-bg-hover;
+      border-color: @pagination-border-hover;
+    }
+  }
+
+  > .active > a,
+  > .active > span {
+    &,
+    &:hover,
+    &:focus {
+      z-index: 2;
+      color: @pagination-color-active;
+      background-color: @pagination-bg-active;
+      border-color: @pagination-border-active;
+      cursor: default;
+    }
+  }
+
+
+  > a, > b, > .divider-end, > .divider-start {
+    display: inline; // Remove list-style and block-level defaults
+    position: relative;
+    float: left; // Collapse white-space
+    padding: @padding-vertical-base @padding-horizontal-base;
+    line-height: @line-height-base;
+    text-decoration: none;
+    color: @pagination-color;
+    background-color: @pagination-bg;
+    border: 1px solid @pagination-border;
+    margin-left: -1px;
+
+    &:first-child {
+      margin-left: 0;
+      .border-left-radius(@border-radius-base);
+    }
+    &:last-child {
+      .border-right-radius(@border-radius-base);
+    }
+  }
+
+  >.divider-end, > .divider-start {
+    color: @text-color;
+  }
+
+  > a, > b {
+    font-weight: 400;
+
+    &:hover,
+    &:focus {
+      color: @pagination-color-hover;
+      background-color: @pagination-bg-hover;
+      border-color: @pagination-border-hover;
+    }
+  }
+
+  > b {
+    &,
+    &:hover,
+    &:focus {
+      z-index: 2;
+      color: @pagination-color-active;
+      background-color: @pagination-bg-active;
+      border-color: @pagination-border-active;
+      cursor: default;
+    }
+  }
+
+  > span {
+    display:none;
+  }
+
+  > .disabled {
+    > span,
+    > span:hover,
+    > span:focus,
+    > a,
+    > a:hover,
+    > a:focus {
+      color: @pagination-color-disabled;
+      background-color: @pagination-bg-disabled;
+      border-color: @pagination-border-disabled;
+      cursor: @cursor-disabled;
+    }
+  }
+}
+
+// Sizing
+// --------------------------------------------------
+
+// Large
+.pagination-lg {
+  .pagination-size(@padding-vertical-large; @padding-horizontal-large; @font-size-large; @border-radius-large);
+}
+
+// Small
+.pagination-sm {
+  .pagination-size(@padding-vertical-small; @padding-horizontal-small; @font-size-small; @border-radius-small);
+}
+
+.page-holder {
+  .loader {
+    display:none;
+    text-align:center;
+    margin: @line-height-base 0;
+
+    span i {
+      margin-right:5px;
+    }
+  }  
+
+  & > .btn {
+    display:none;
+    margin: 0 0 @line-height-base;
+  }
+
+  .page-cut {
+    text-align:center;
+    margin: 0 0 @line-height-base;
+    position:relative;
+
+    span:after, span:before {
+      content:'';
+      position:absolute;
+      display:block;
+      border-bottom:1px dotted;
+      top:50%;
+      width:30%;
+    }
+
+    span:after {
+      left:0;
+    }
+
+    span:before {
+      right:0;
+    }
+  }
+}
+
+
+.pager-cut {
+  color: @color-light;
+  border-bottom:1px dashed;
+  margin: @line-height-base auto @line-height-base/2;
+  position:relative;
+  text-align:center;
+  width:100%;
+
+  span {
+    background-color:inherit;
+    padding: 0 5px;
+    color:@color-base;
+    position:absolute;
+    top:-8px;
+    right:0;
+    left:0;
+  }
+}

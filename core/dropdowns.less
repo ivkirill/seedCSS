@@ -1,0 +1,197 @@
+//
+// Dropdown menus
+// --------------------------------------------------
+
+[data-seed="dropdown"] {
+  position:relative;
+  cursor:pointer;
+}
+
+[data-seed="drop"],
+[role="drop"] {
+  display:none;
+  position:absolute;
+  z-index:5;
+  background-color:@dropdown-bg;
+  padding: 10px;
+
+  &.panel {
+    padding:0;
+  }
+}
+
+[role="dropdown-handler"][data-config-rotate="true"] {
+    .fa {
+      .transition-property("all");
+      .transition-duration(.35s);
+      .transition-timing-function(ease);
+      .rotate(0);
+    }
+
+    &.active .fa {
+      .rotate(-180deg);
+    }
+}
+
+
+// Dropdown arrow/caret
+.caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top:   @caret-width-base dashed;
+  border-right: @caret-width-base solid transparent;
+  border-left:  @caret-width-base solid transparent;
+}
+
+// Prevent the focus on the dropdown toggle when closing dropdowns
+.dropdown-toggle:focus {
+  outline: 0;
+}
+
+// The dropdown menu (ul)
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: @zindex-dropdown;
+  display: none; // none by default, but block on "open" of the menu
+  float: left;
+  min-width: 100%;
+  padding: 5px 0;
+  margin: 2px 0 0; // override default ul
+  list-style: none;
+  font-size: @font-size-base;
+  text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
+  background-color: @dropdown-bg;
+  border: 1px solid @dropdown-border-color;
+  border-radius: @dropdown-border-radius;
+  .box-shadow(0 6px 12px rgba(0,0,0,.175));
+  background-clip: padding-box;
+
+  // Dividers (basically an hr) within the dropdown
+  .divider {
+    height: 1px;
+    margin: ((@line-height-base / 2) - 1) 0;
+    overflow: hidden;
+    background-color: @text-disabled;
+  }
+
+  > ul {
+    min-width: 100%;
+    padding: 5px 0;
+    margin: 2px 0 0; // override default ul
+    list-style: none;
+    font-size: @font-size-base;
+    overflow-y: auto;
+  }
+
+  // Links within the dropdown menu
+  > ul > li > a,
+  > li > a {
+    display: block;
+    padding: 3px 15px;
+    clear: both;
+    font-weight: normal;
+    line-height: @line-height-base;
+    color: @dropdown-link-color;
+    white-space: nowrap; // prevent links from randomly breaking onto new lines
+  }
+
+  &.dropup {
+    bottom: 100%;
+    top: auto;
+  }
+}
+
+// Hover/Focus state
+.dropdown-menu > li > a,
+.dropdown-menu > ul > li > a {
+  &:hover,
+  &.hover,
+  &:focus {
+    text-decoration: none;
+    color: @dropdown-link-color-hover;
+    background-color: @dropdown-link-bg-hover;
+  }
+}
+
+.dropdown-menu > li[data-value] > a,
+.dropdown-menu > ul > li[data-value] > a {
+  &:hover,
+  &.hover,
+  &:focus {
+    cursor: pointer;
+  }
+}
+
+
+// Active state
+.dropdown-menu > .active > a,
+.dropdown-menu > ul > .active > a {
+  &,
+  &:hover,
+  &.hover,
+  &:focus {
+    color: @dropdown-link-color-active;
+    text-decoration: none;
+    outline: 0;
+    background-color: @dropdown-link-bg-active;
+  }
+}
+
+// Open state for the dropdown
+.open {
+  // Show the menu
+  > .dropdown-menu {
+    display: block;
+  }
+
+  // Remove the outline when :focus is triggered
+  > a {
+    outline: 0;
+  }
+}
+
+// Menu positioning
+.dropdown-menu-right {
+  left: auto; // Reset the default from `.dropdown-menu`
+  right: 0;
+}
+.dropdown-menu-left {
+  left: 0;
+  right: auto;
+}
+
+// Dropdown section headers
+.dropdown-header {
+  display: block;
+  padding: 3px 20px;
+  font-size: @font-size-small;
+  line-height: @line-height-base;
+  color: @dropdown-header-color;
+  white-space: nowrap; // as with > li > a
+
+  &:empty {
+    display:none;
+  }
+}
+.dropdown-header.select-header { padding-right:10px; padding-left:10px; }
+
+// Dropdown section headers
+.dropdown-footer {
+  display: block;
+  padding: 3px 20px;
+  font-size: @font-size-small;
+  line-height: @line-height-base;
+  color: @dropdown-header-color;
+  white-space: nowrap; // as with > li > a
+
+  &:empty {
+    display:none;
+  }
+}
+
+.dropdown-footer.select-summary { padding-right:10px; padding-left:10px; }

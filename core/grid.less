@@ -1,0 +1,37 @@
+// Grid system
+// --------------------------------------------------
+
+// Grid
+.grid {
+  .make-grid(@grid-gutter-width; @grid-outdent-width);
+}
+
+// Cell
+// Common styles for small and large grid cells
+.make-cell();
+
+// Section widths
+section,
+.section {
+  width: 100%;  
+  max-width: 100%;
+  min-width: @section-x;
+
+  @media (min-width: @screen-m) {
+    width: @section-m;
+  }
+  @media (min-width: @screen-l) {
+    width: @section-l;
+  }
+  @media (min-width: @screen-e) {
+    width: @section-e;
+  }
+
+  .make-group();
+  
+// Section full width of body
+  &.section-full {
+    width: 100%;
+  }  
+}
+

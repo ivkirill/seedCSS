@@ -1,0 +1,426 @@
+// Buttons
+// --------------------------------------------------
+
+
+// Button default style
+.btn, button {
+  display: inline-block;
+  vertical-align: middle;
+
+  font-family: @font-family-base;
+  font-size: @font-size-base;
+  font-weight: @button-font-weight;
+
+  text-align: center;
+  text-decoration: none;
+ 
+  white-space: nowrap;
+
+  margin-bottom: 0;
+  padding: @padding-vertical-base @padding-horizontal-base;
+  height: @input-height-base;
+  line-height: @line-height-base;
+
+  cursor: @cursor-pointer;
+  touch-action: manipulation;
+  -webkit-appearance: none;
+  
+  background-image: none;
+  background-color: @button-bg;
+
+  color: @button-color;
+
+  border: @input-border-width solid @button-border-color;
+  border-radius: @input-border-radius;
+
+  outline: none;
+  box-shadow: none;
+  
+  .user-select(none);
+
+  &,
+  &:active,
+  &.active {
+    &:focus,
+    &.focus {
+      outline: thin dotted;
+      outline: none;
+    }
+  }
+
+  &:hover,
+  &:focus,
+  &.focus {
+    z-index:2;
+    color: @button-color;
+    text-decoration: none;
+
+    background-color: darken(@button-bg, 5%);
+    border-color: darken(@button-border-color, 6%);
+
+  }
+
+  &:active,
+  &.active {
+    z-index:2;
+    outline: 0;
+    background-image: none;
+    .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+
+    color: @button-color;
+    background-color: darken(@button-bg, 7%);
+    border-color: darken(@button-border-color, 8%);
+  }
+
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    cursor: @cursor-disabled;
+    pointer-events: none;
+    .opacity(.65);
+    .box-shadow(none);
+  }
+
+  &.btn-text {
+    cursor: initial;
+    touch-action: none;
+    pointer-events: none;
+    .user-select(text);
+  }
+
+  &.btn-outline {
+    background-color: transparent;
+    border-color: @input-border-color;
+    color: @text-color;
+
+    &:hover,
+    &:focus,
+    &.focus {
+      color: lighten(@button-color, 8%);
+      background-color: transparent;
+      border-color: lighten(@input-border-color, 5%);
+    }
+
+    &:active,
+    &.active {
+      color: darken(@button-color, 4%);
+      background-color: transparent;
+      border-color: darken(@input-border-color, 10%);
+      box-shadow: none;
+    }
+  }
+
+  &.btn-label {
+    background-color: transparent;
+    border-color: transparent;
+    color: @text-color;
+    padding-left: 0;
+    padding-right: 0;
+
+    &:hover,
+    &:focus,
+    &.focus {
+      background-color: transparent;
+      border-color: transparent;
+    }
+
+    &:active,
+    &.active {
+      background-color: transparent;
+      border-color: transparent;
+      .box-shadow(none);
+    }
+  }
+
+
+  &.btn-link {
+    background-color: transparent;
+    border-color: transparent;
+    text-decoration: underline;
+
+    &:hover,
+    &:focus,
+    &.focus {
+      color: lighten(@button-color, 8%);
+      background-color: transparent;
+      text-decoration: @link-decoration-hover;
+    }
+
+    &:active,
+    &.active {
+      color: darken(@button-color, 10%);
+      background-color: transparent;
+      box-shadow: none;
+    }
+  }
+
+  &.btn-full {
+    width: 100%;
+  }
+}
+
+// primary style
+.btn-primary {
+  .button-color(@button-bg-primary; @button-color-primary; @button-border-primary);
+}
+// success style
+.btn-success {
+  .button-color(@button-bg-success; @button-color-success; @button-border-success);
+}
+// info style
+.btn-info {
+  .button-color(@button-bg-info; @button-color-info; @button-border-info);
+}
+// warning style
+.btn-warning {
+  .button-color(@button-bg-warning; @button-color-warning; @button-border-warning);
+}
+// error style
+.btn-error {
+  .button-color(@button-bg-error; @button-color-error; @button-border-error);
+}
+
+// Button Sizes
+// --------------------------------------------------
+
+.btn-l {
+  .button-size(@padding-vertical-large; @padding-horizontal-large; @font-size-large; @line-height-large; @input-height-large; @input-border-radius-large; @input-border-width-large);
+}
+.btn-s {
+  .button-size(@padding-vertical-small; @padding-horizontal-small; @font-size-small; @line-height-small; @input-height-small; @input-border-radius-small; @input-border-width-small);
+}
+
+// buttons roles
+
+[role^="button"] {
+  cursor: pointer;
+}
+
+
+//-- Buttons groups 
+.group {
+//  .make-grid(0);
+
+  &.btn-group {
+    display: inline-block;
+  }
+
+  .btn + .btn,
+  .btn + input,
+  input + .btn,
+  input + input {
+    margin-left: -@input-border-width;
+    border-radius: 0;
+  }
+
+  input:first-child,
+  .btn:first-child {
+    .border-right-radius(0);
+  }
+
+  input:last-child,
+  .btn:last-child {
+    .border-right-radius(@border-radius-base);
+  }
+  
+  &.column {
+    .btn {
+      margin-bottom:0;
+    }
+
+    .btn:first-of-type {
+      .border-top-radius(@border-radius-base);
+      .border-bottom-radius(0);
+    }
+    
+    .btn:last-of-type {
+      .border-top-radius(0);
+      .border-bottom-radius(@border-radius-base);
+    }
+   
+    .btn + .btn {
+      margin-left: 0;
+      margin-top: -@input-border-width;
+    }  
+  }
+}
+
+// Custom select style for Seed Buttons
+
+[data-seed="buttons"] {
+  &,
+  > .btn,
+  > .btn-group,
+  > .input-group-btn,
+  > .btn-group > .btn,
+  > .input-group-btn > .btn {
+    & > input[type="radio"],
+    & > input[type="checkbox"] {
+      position: absolute;
+      clip: rect(0,0,0,0);
+      pointer-events: none;
+    }
+  }
+}
+
+.button-seed(@color; @background; @border; @class) {
+  [data-seed="buttons"] {
+    &,
+    > .btn,
+    > .btn-group,
+    > .input-group-btn,
+    > .btn-group > .btn,
+    > .input-group-btn > .btn {
+      & > input[type="radio"]:checked + .btn-@{class},
+      & > input[type="checkbox"]:checked + .btn-@{class} {
+        color: @color;
+        background-color: darken(@background, 10%);
+        border-color: darken(@border, 12%);
+        .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+        z-index:2;
+      }
+    }
+  }
+}
+
+
+.button-seed(@button-color-primary; @button-bg-primary; @button-border-primary; primary);
+.button-seed(@button-color-success; @button-bg-success; @button-border-success; success);
+.button-seed(@button-color-info; @button-bg-info; @button-border-info; info);
+.button-seed(@button-color-warning; @button-bg-warning; @button-border-warning; warning);
+.button-seed(@button-color-error; @button-bg-error; @button-border-error; error);
+
+
+// Custom select style for Seed Select
+
+[data-seed="select"] {
+  select {
+    clip: rect(0,0,0,0) !important;
+    pointer-events: none !important;
+    position: absolute;
+    top: -9999px;
+  }
+}
+
+.select {
+  position:relative;
+  display: inline-block;
+  vertical-align: middle; // match .btn alignment given font-size hack above
+
+  .select-title {
+    min-width:100px;
+    display:inline;
+    text-align:left;
+    margin-right:10px;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .select-status {
+    visibility:hidden;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    right: 9px;
+    top:0;
+    height:100%;
+    z-index: 3;
+  }
+
+  .select-wrap {
+    .display-flex();
+    .align-items(center);
+  }
+
+
+  > select {
+    width: 1px;
+    height:1px;
+    margin: -1px;
+    border: 0;
+    position: absolute !important;
+    top:0;
+    left:0;
+    clip: rect(0,0,0,0) !important;
+    pointer-events: none !important;
+  }
+}
+
+// Toolbar for Seed Filter
+[role="toolbar"] {
+  &[aria-expanded="false"] {
+    display: none;
+  }
+
+  .caption {
+    cursor:pointer;
+
+    .caret {
+      display:none;
+    }
+
+    &.action {
+      .caret {
+        display:inline-block;
+        .rotate(180deg);
+        .transition-property("all");
+        .transition-duration(.35s);
+        .transition-timing-function(ease);
+      }
+    }
+
+    &.action.closed {
+      .caret {
+        display:inline-block;
+        .rotate(0deg);
+      }
+    }
+  }
+
+  .items {
+    overflow:hidden
+  }
+}
+
+@media (max-width: @navbar-breakpoint-max) {
+  [role="toolbar"] + [role="toolbar"] {
+    margin-top: @grid-gutter-width / 2;	
+  }
+}
+
+
+.badge {
+  display: inline-block;
+  min-width: @grid-gutter-width;
+  padding: 3px 5px;
+  font-size: @font-size-small - 0.1rem;
+  font-weight: 300;
+  color: @color-darker;
+  line-height: @line-height-small;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-align: center;
+  background-color: @color-lighter;
+  border-radius: @border-radius-small;
+        
+  &:empty {
+    display: none;
+  }
+
+  &[data-before]:empty,
+  &[data-after]:empty {
+    display: inline-block;
+  }
+
+  &:before {
+    content: attr(data-before);
+    margin-right: 0.3rem;
+  }
+
+  &:after {
+    content: attr(data-after);
+    margin-left: 0.3rem;
+  }
+
+}

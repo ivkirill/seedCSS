@@ -1,0 +1,99 @@
+// Tabs
+// --------------------------------------------------
+
+[role="tab"] {
+  padding: (@line-height-base / 2) 0;
+}
+
+.menu-tabs {
+  border-bottom: @tab-caption-border-width solid @tab-menu-border-color;
+  padding-left: 0;
+  margin-left: 0;
+  margin-top: @line-height-base/2;
+  margin-bottom: @line-height-base/2;
+  
+  list-style: none;
+  .display-flex();
+  -webkit-box-pack: start;
+  .justify-content(flex-start);
+  .align-items(baseline);
+  
+
+  > li {
+    position: relative;
+    display: inline-block;
+    .align-self(flex-end);
+    margin-bottom: -1px;
+    padding: 0;
+    overflow: hidden;
+
+    &:before,
+    &:after {
+      display: none;
+    }
+
+    > a,
+    > span {
+      position: relative;
+      display: block;
+      padding: @tab-caption-padding;
+      overflow: hidden;
+
+      margin-right: 2px;
+      line-height: @line-height-base;
+      border-width: @tab-caption-border-width;
+      border-style: solid;
+      border-color: @tab-caption-border-color @tab-caption-border-color @tab-menu-border-color;
+      border-radius: @border-radius-base @border-radius-base 0 0;
+	  
+	  background-color: @tab-caption-bg;
+	  color: @tab-caption-color;
+	  
+	  cursor: pointer;
+	  
+      &:hover,
+      &:focus {
+        text-decoration: none;
+        background-color: @tab-caption-bg-hover;
+		color: @tab-caption-color-hover;
+      }
+	  
+      &:hover {
+        border-color: @tab-caption-border-color-hover @tab-caption-border-color-hover @tab-menu-border-color;
+      }
+    }
+
+    &.active {
+      overflow: visible;
+
+      > a,
+      > span {
+	white-space: nowrap;
+        overflow: visible;
+
+        &,
+        &:hover,
+        &:focus {
+          color: @tab-caption-color-active-hover;
+          background-color: @tab-caption-bg-active-hover;
+          border: @tab-caption-border-width solid @tab-caption-border-color-active-hover;
+          border-bottom-color: transparent;
+        }
+      }
+    }
+  }
+
+  // Open dropdowns
+  .open > a {
+    &,
+    &:hover,
+    &:focus {
+      background-color: @tab-caption-bg-hover;
+      border-color: @link-color;
+    }
+  }
+
+  > li > a > img {
+    max-width: none;
+  }
+}

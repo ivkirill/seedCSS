@@ -1,0 +1,86 @@
+//
+// Panels
+// --------------------------------------------------
+
+
+// Base class
+.panel {
+  margin-bottom: @line-height-base;
+  background-color: @panel-bg;
+  border: 1px solid transparent;
+  border-radius: @panel-border-radius;
+  .box-shadow(0 1px 1px rgba(0,0,0,.05));
+}
+
+// Panel contents
+.panel-body {
+  padding: @panel-body-padding;
+
+  &.panel-overflow {
+    overflow-y:auto;
+  }
+
+  > .h1,
+  > h1,
+  > .h2,
+  > h2,
+  > .h3,
+  > h3 {
+    margin-top: 0;
+  }
+}
+
+// Optional heading
+.panel-heading {
+  padding: @panel-heading-padding;
+  border-bottom: 1px solid transparent;
+  .border-top-radius((@panel-border-radius - 1));
+
+  > .dropdown .dropdown-toggle {
+    color: inherit;
+  }
+}
+
+// Within heading, strip any `h*` tag of its default margins for spacing.
+.panel-title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: @font-size-base;
+  color: inherit;
+
+  > a,
+  > small,
+  > .small,
+  > small > a,
+  > .small > a {
+    color: inherit;
+  }
+}
+
+// Optional footer (stays gray in every modifier class)
+.panel-footer {
+  padding: @panel-footer-padding;
+  background-color: @panel-footer-bg;
+  border-top: 1px solid @panel-inner-border;
+  .border-bottom-radius((@panel-border-radius - 1));
+}
+
+// Contextual variations
+.panel-default {
+  .panel-variant(@panel-border-default; @panel-text-default; @panel-heading-bg-default; @panel-border-default);
+}
+.panel-primary {
+  .panel-variant(@panel-border-primary; @panel-text-primary; @panel-heading-bg-primary; @panel-border-primary);
+}
+.panel-success {
+  .panel-variant(@panel-border-success; @panel-text-success; @panel-heading-bg-success; @panel-border-success);
+}
+.panel-info {
+  .panel-variant(@panel-border-info; @panel-text-info; @panel-heading-bg-info; @panel-border-info);
+}
+.panel-warning {
+  .panel-variant(@panel-border-warning; @panel-text-warning; @panel-heading-bg-warning; @panel-border-warning);
+}
+.panel-error {
+  .panel-variant(@panel-border-error; @panel-text-error; @panel-heading-bg-error; @panel-border-error);
+}

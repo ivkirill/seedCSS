@@ -1,0 +1,255 @@
+//
+// Carousel
+// --------------------------------------------------
+
+@-webkit-keyframes "carousel-bar" {
+	0% {
+		width: 0;
+	}
+	100% {
+		width: 100%;
+	}
+}
+@keyframes "carousel-bar" {
+	0% {
+		width: 0;
+	}
+	100% {
+		width: 100%;
+	}
+}
+
+.carousel {
+	position: relative;
+	height: 300px;
+	overflow-y: hidden;
+	
+	&.hover-stop {
+		&:hover {
+			.carousel-bar.run {
+				-webkit-animation-play-state: paused;
+				animation-play-state: paused;
+			}
+		}
+	}
+
+	.carousel-area {
+		position: relative;
+		overflow-x: hidden;
+		overflow-y: hidden;
+		width: 100%;
+		height: 100%;
+	}
+
+	.carousel-box {
+		position: relative;
+		width: auto;
+		height: 100%;
+		
+		> * {
+			background-position-x: center;
+			height: 100%;
+		}
+	}
+
+	.carousel-group {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		display: none;
+		> * {
+			height: 100%;
+		}
+		> img {
+			height: auto;
+		}
+		.caption {
+			position: absolute;
+			bottom: 40px;
+			right: 10px;
+			text-align: right;
+			line-height: 25px;
+			color: #fff;
+			z-index: 10;
+		}
+	}          
+
+	.cloned {
+		position: absolute;
+		top: 0;
+		left: 0;
+		.caption {
+			display: none;
+		}
+	}
+
+	.carousel-bar {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 0;
+		height: 5px;
+		background-color: @component-bg-active;
+		
+		&.run {
+			-webkit-animation-name: carousel-bar;
+			-webkit-animation-timing-function: linear;
+			-webkit-animation-iteration-count: 1;
+			-webkit-animation-fill-mode: forwards;
+			animation-name: carousel-bar;
+			animation-timing-function: linear;
+			animation-iteration-count: 1;
+			animation-fill-mode: forwards;
+		}
+	}
+
+	.carousel-navbar {
+		color: #fff;
+		position: absolute;
+		text-align: center;
+		bottom: 15px;
+		right: 0;
+		left: 0;
+		z-index: 2;
+
+		.carousel-navbutton {
+			width: 3rem;
+			height: 3rem;
+			margin: 0 0.5rem;
+			border-radius: @border-radius-base;
+			border-width: @component-border-width;
+			border-color: @component-color-active;
+			border-style: solid;
+			color: @component-bg-active;
+			background-color: @component-color-active;
+			margin-bottom: 0;
+			display: inline-block;
+			font-weight: @button-font-weight;
+			text-align: center;
+			line-height: 1;
+			vertical-align: middle;
+			touch-action: manipulation;
+			cursor: pointer;
+			background-image: none;
+			white-space: nowrap;
+			span {
+				font-size: 1.8rem;
+				line-height: 1.8rem;
+				font-style: normal;
+				z-index: 3;
+			}
+			&:hover {
+				border-color: @color-primary;
+			}
+			&:active {
+				color: @component-color-active;
+				background-color: @component-bg-active;
+			}
+			
+			&.carousel-next {
+				span {
+					//margin-left: 4px;
+				}
+			}
+		}
+
+		.carousel-status {
+			display: none;
+		}
+
+		.carousel-pages {
+			//line-height: 1.8rem;
+		
+			i {
+				width: 3rem;
+				height: 3rem;
+				margin: 0 0.5rem;
+				color: @component-bg-active;
+				border-radius: @border-radius-base;
+				border-width: @component-border-width;
+				border-color: @component-color-active;
+				border-style: solid;
+				background-color: @component-color-active;
+				display: inline-block;
+				margin-bottom: 0;
+				font-weight: @button-font-weight;
+				text-align: center;
+				vertical-align: middle;
+				touch-action: manipulation;
+				cursor: pointer;
+				background-image: none;
+				white-space: nowrap;
+				
+				.num {
+					font-size: 1.4rem;
+					line-height: 2.8rem;
+					font-style: normal;
+					text-align: center;
+					z-index: 3;
+				}
+				&:hover {
+					border-color: @color-primary;//@component-bg-active;
+				}
+			}
+			i.active {
+				color: @component-color-active;
+				background-color: @component-bg-active;
+				border-color: @component-bg-active;
+			}
+		}
+	}
+	
+	&.carousel-animation-fade {
+		.carousel-group {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+		}
+	}
+	
+	&.carousel-animation-slide {
+		.carousel-box {
+			max-width: 500%;
+			width: 500%;
+		}
+		.carousel-group {
+			display: inline-block;
+			position: relative;
+			padding: 0;
+			top: auto;
+			left: auto;
+			width: 20%;
+			vertical-align: top;
+		}
+	}
+	
+	&.carousel-animation-horizontal,
+	&.carousel-animation-blocks,
+	&.carousel-animation-glass {
+		.cloned {
+			width: 100%;
+			background-position: bottom center;
+			position: absolute;
+			top: 0;
+			left: 0;
+			overflow: hidden;
+			display: block;
+			z-index: 1;
+			a {
+				display: block;
+			}
+			img {
+				position: absolute;
+				top: 0;
+				left: 0;
+				opacity: 1;
+				display: block;
+			}
+		}
+	}
+	
+}

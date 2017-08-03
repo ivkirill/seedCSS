@@ -1,0 +1,18 @@
+//
+// Drawer animation
+// --------------------------------------------------
+
+
+.on {
+  [role="drawer-push"] {
+    padding-left: @drawer-width;
+    transition: padding-left 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  }
+}
+
+.on,
+.off {
+  [role="drawer-push"] {
+      transition: padding-left 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  }
+}

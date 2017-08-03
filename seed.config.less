@@ -1,0 +1,538 @@
+/* 
+* Seed 2 LESS Defaults
+* K.Ivanov
+* 2016.02.29
+*
+* varables naming: component-[(parametr|subcomponent)]-(state|size|option): value;
+*/
+
+//GLOBAL VARS
+
+//==================
+//== Main Colors
+//==================
+
+@color-white: #fff;
+@color-lighter: #eee;
+@color-light: #ddd;
+@color-base: #ccc;
+@color-dark: #777;
+@color-darker: #333;
+@color-black: #000;
+
+@color-primary: #337ab7;
+@color-success: #14D100;
+@color-error: #DE0000;
+@color-info: #5DA8C5;
+@color-warning: #ffb200;
+
+//== Background-color for <body> tag
+@body-bg: #ffffff;
+@html-font-size: 10px;
+
+//== Text color
+@text-color: #000000;
+@text-disabled: @color-light;
+
+//== Link colors
+@link-color: @color-primary;
+@link-color-hover: darken(@link-color, 10%);
+
+//== Link hover decoration.
+@link-decoration-hover: none;
+
+//== Fonts
+@font-family-base: Arial, sans-serif;
+@font-family-code: Menlo, Monaco, Consolas, "Courier New", monospace;
+
+@font-size-base: 1.4rem;
+@font-size-large: (@font-size-base * 1.25);
+@font-size-small: (@font-size-base * 0.85);
+
+//== Headings
+@heading-font-family: @font-family-base;
+@heading-font-weight: 600;
+@heading-line-height: 1.1;
+
+// Headings colors
+@heading-color: @text-color;
+@heading-small-color: @color-light;
+
+// Headings sizes
+@h1-font-size: (@font-size-base * 2.1);
+@h2-font-size: (@font-size-base * 1.9);
+@h3-font-size: (@font-size-base * 1.7);
+@h4-font-size: (@font-size-base * 1.5);
+@h5-font-size: (@font-size-base * 1.3);
+@h6-font-size: (@font-size-base * 1.1);
+
+//== Cursors
+@cursor-pointer: pointer;
+@cursor-disabled: not-allowed;
+
+
+
+
+//== Components
+
+// Common paddings
+@margin-vertical-base: 1rem;
+
+@padding-vertical-base: 0.5rem;
+@padding-horizontal-base: 1.2rem;
+
+@padding-vertical-small: @padding-vertical-base - 0.2rem;
+@padding-horizontal-small: @padding-horizontal-base - 0.4rem;
+
+@padding-vertical-large: @padding-vertical-base + 0.4rem;
+@padding-horizontal-large: @padding-horizontal-base + 0.6rem;
+
+@line-height-base: @input-height-base - @padding-vertical-base*2;
+@line-height-large: 1.3333333; // extra decimals for Win 8.1 Chrome
+@line-height-small: 1.5;
+
+// Common border-radius
+@border-radius-base: 4px;
+@border-radius-small: @border-radius-base + 2;
+@border-radius-large: @border-radius-base - 1;
+
+// Common component
+@component-border-width: 1px;
+@component-color-active: #fff;
+@component-bg-active: @color-primary;
+
+// Caret width
+@caret-width-base: 4px;
+@caret-width-large: 5px;
+
+// Z-indexes
+@zindex-navbar: 1000;
+@zindex-dropdown: 1000;
+@zindex-tooltip: 1070;
+@zindex-navbar-fixed: 1030;
+@zindex-modal-background: 1040;
+@zindex-modal: 1050;
+
+
+
+//== Controls. Input, button
+
+// Common height
+@input-height-base: 3.4rem;
+@input-height-small: 3rem;
+@input-height-large: 4.6rem;
+
+// Border style
+@input-border-width: @component-border-width;
+@input-border-width-large: @component-border-width + 1px;
+@input-border-width-small: @component-border-width;
+
+@input-border-color: @color-base;
+@input-border-radius: @border-radius-base;
+
+@input-border-radius-small: @border-radius-small;
+@input-border-radius-large: @border-radius-large;
+
+@input-color: @text-color;
+@input-color-disabled: #999;
+
+@input-bg: #fff;
+@input-bg-disabled: #eee;
+
+@input-group-addon-bg: @color-light;
+@input-group-addon-border-color: @input-border-color;
+
+// Focus style
+@input-bg-focus: #fff;
+@input-border-color-focus: #66afe9;
+@input-color-placeholder: #bcbcbc;
+
+
+
+//== Buttons color
+@button-font-weight: 300;
+
+@button-bg: @color-lighter;
+@button-color: @color-black;
+@button-border-color: @color-base;
+
+@button-bg-primary: @color-primary;
+@button-color-primary: #fff;
+@button-border-primary: darken(@button-bg-primary, 5%);
+
+@button-bg-success: @color-success;
+@button-color-success: #fff;
+@button-border-success: darken(@button-bg-success, 5%);
+
+@button-bg-error: @color-error;
+@button-color-error: #fff;
+@button-border-error: darken(@button-bg-error, 5%);
+
+@button-bg-info: @color-info;
+@button-color-info: #fff;
+@button-border-info: darken(@button-bg-info, 5%);
+
+@button-bg-warning: @color-warning;
+@button-color-warning: #fff;
+@button-border-warning: darken(@button-bg-warning, 5%);
+
+@button-link-disabled-color: darken(@color-base, 10%);
+
+@form-group-margin-top: 1.5rem;
+
+//== Form states and alerts
+//
+//## Define colors for form feedback states and, by default, alerts.
+
+@state-success-text: #3c763d;
+@state-success-bg: #dff0d8;
+@state-success-border: darken(spin(@state-success-bg, -10), 5%);
+
+@state-info-text: #31708f;
+@state-info-bg: #d9edf7;
+@state-info-border: darken(spin(@state-info-bg, -10), 7%);
+
+@state-warning-text: #8a6d3b;
+@state-warning-bg: #fcf8e3;
+@state-warning-border: darken(spin(@state-warning-bg, -10), 5%);
+
+@state-error-text: #a94442;
+@state-error-bg: #f2dede;
+@state-error-border: darken(spin(@state-error-bg, -10), 5%);
+
+
+// Mark
+@mark-color: #202020;
+@mark-bg: #ffd61e;
+
+// Dfn
+@dfn-color-border: #202020;
+
+// Pre
+@pre-bg: #f5f5f5;
+@pre-color: @color-dark;
+@pre-border-color: #ccc;
+@pre-scrollable-max-height: 340px;
+
+// Code
+@code-bg: #f9f2f2;
+@code-color: #c72542;
+
+// Kbd
+@kbd-color: rgba(255, 255, 255, .85);
+@kbd-bg: #202020;
+
+// Fieldset
+@fieldset-border-color: @color-light;
+@fieldset-border-size: @input-border-width;
+
+// Blockquote
+@blockquote-small-color: @color-light;
+@blockquote-font-size: (@font-size-base * 1.25);
+@blockquote-border-color: lighten(@color-light, 10%);
+
+// Abbr
+@abbr-border-color: @color-light;
+
+
+//== Misc vars
+//** Horizontal offset for forms and lists.
+@component-offset-horizontal: 180px;
+
+@dl-horizontal-offset: 20%;
+//** Horizontal line color.
+@hr-border: lighten(@color-light, 10%);
+
+
+//== Media queries breakpoints
+//## Define the breakpoints at which your layout will change, adapting to different screen sizes.
+
+// X-small screen 
+@screen-x: 360px;
+// Small screen
+@screen-s: 580px;
+// Medium screen
+@screen-m: 768px;
+// Large screen
+@screen-l: 1020px;
+// X-Large screen
+@screen-e: 1340px;
+
+@screen-min: @screen-x;
+@screen-max: 1020px;
+
+// So media queries don't overlap when required, provide a maximum
+@screen-x-max: (@screen-s - 1);
+@screen-s-max: (@screen-m - 1);
+@screen-m-max: (@screen-l - 1);
+@screen-l-max: (@screen-e - 1);
+
+//== Grid system
+
+//** Number of columns in the grid.
+@grid-columns: 12;
+
+//** Padding between columns. Gets divided in half for the left and right.
+@grid-gutter-width: 2rem;
+
+//** Outdent from window. 
+@grid-outdent-width: @grid-gutter-width;
+
+//== Section sizes
+// X-Small screen
+@section-x: (@screen-x - @grid-gutter-width*2);
+// Small screen
+@section-s: (@screen-s - @grid-gutter-width*2);
+// Medium screen
+@section-m: (@screen-m - @grid-gutter-width*2);
+// Large screen
+@section-l: (@screen-l - @grid-gutter-width*2);
+// X-Large screen
+@section-e: (@screen-e - @grid-gutter-width*4);
+
+
+//== Prototype elements
+
+// Header vars
+@header-bg: @body-bg;
+@header-height: 65px;
+
+// Footer vars
+@footer-bg: lighten(@color-light, 5%);
+@footer-height: 50px;
+
+// Content vars
+@content-bg: @body-bg;
+@content-padding: 20px;
+
+// Drawer vars
+@drawer-bg: @body-bg;
+@drawer-width: 250px;
+@drawer-margin-vertical: 0px;
+@drawer-margin-horizontal: 30px;
+
+
+
+//== Panels
+
+@panel-bg: #fff;
+@panel-body-padding: 1rem;
+@panel-heading-padding: 0.5rem 1rem;
+@panel-footer-padding: @panel-heading-padding;
+@panel-border-radius: @border-radius-base;
+
+//** Border color for elements within panels
+@panel-inner-border: #ddd;
+@panel-footer-bg: #f5f5f5;
+
+@panel-text-default: @color-dark;
+@panel-border-default: #ddd;
+@panel-heading-bg-default: #f5f5f5;
+
+@panel-text-primary: #fff;
+@panel-border-primary: @color-primary;
+@panel-heading-bg-primary: @color-primary;
+
+@panel-text-success: @state-success-text;
+@panel-border-success: @state-success-border;
+@panel-heading-bg-success: @state-success-bg;
+
+@panel-text-info: @state-info-text;
+@panel-border-info: @state-info-border;
+@panel-heading-bg-info: @state-info-bg;
+
+@panel-text-warning: @state-warning-text;
+@panel-border-warning: @state-warning-border;
+@panel-heading-bg-warning: @state-warning-bg;
+
+@panel-text-error: @state-error-text;
+@panel-border-error: @state-error-border;
+@panel-heading-bg-error: @state-error-bg;
+
+
+//== Thumbnails
+@thumbnail-padding: 4px;
+@thumbnail-bg: @color-white;
+@thumbnail-border: #ddd;
+@thumbnail-border-radius: @border-radius-base;
+@thumbnail-caption-color: @text-color;
+@thumbnail-caption-padding: 9px;
+
+
+
+//== Dropdowns
+
+// Dropdown colors
+@dropdown-bg: @color-white;
+@dropdown-border-color: fade( @color-base, 0.15 );
+@dropdown-border-radius: @border-radius-base;
+
+// Dropdown link
+@dropdown-link-color: @color-dark;
+@dropdown-link-color-hover: darken(@color-dark, 5%);
+@dropdown-link-color-active: @component-color-active;
+@dropdown-link-color-disabled: @color-light;
+
+@dropdown-link-bg-hover: #f5f5f5;
+@dropdown-link-bg-active: @component-bg-active;
+
+// Dropdown other
+@dropdown-divider-bg: #e5e5e5;
+@dropdown-header-color: @color-light;
+
+
+
+//== Groups
+
+@group-bg: @color-white;
+@group-border: @color-light;
+@group-border-radius: @border-radius-base;
+@group-border-width: @component-border-width;
+@group-padding-vertical: @grid-gutter-width/4;
+@group-padding-horizontal: @grid-gutter-width/2;
+
+// Group item
+@group-bg-hover: #f5f5f5;
+@group-active-color: @component-color-active;
+@group-active-bg: @component-bg-active;
+@group-active-border: darken(@component-bg-active, 10%);
+@group-active-text-color: lighten(@group-active-bg, 40%);
+
+// Group link
+@group-link-color: @color-dark;
+@group-link-color-hover: darken(@color-dark, 5%);
+@group-link-heading-color: @color-dark;
+
+
+
+
+//== Tables
+//
+@table-cell-padding: 8px;
+@table-condensed-cell-padding: 4px;
+
+@table-bg: transparent;
+@table-bg-accent: #f9f9f9;
+@table-bg-hover: #f5f5f5;
+@table-bg-active: @table-bg-hover;
+@table-border-color: #ddd;
+
+
+//== Modals
+@modal-inner-padding: 1.5rem;
+@modal-title-padding: 1.5rem;
+@modal-title-line-height: @line-height-base;
+
+@modal-content-bg: #fff;
+@modal-content-border-color: #ddd;
+
+@modal-header-border-color: #e5e5e5;
+@modal-footer-border-color: @modal-header-border-color;
+
+@modal-l: 900px;
+@modal-m: 600px;
+@modal-s: 360px;
+
+@modal-margin: @grid-gutter-width;
+
+//== Close
+@close-color: #aaa;
+@close-color-hover: #999;
+
+//== Overlay
+@overlay-color: fade(#000, 80%);
+
+//== Tooltips
+@tooltip-max-width: 200px;
+@tooltip-color: #fff;
+@tooltip-bg: #000;
+@tooltip-opacity: .9;
+@tooltip-arrow-width: 5px;
+@tooltip-arrow-color: @tooltip-bg;
+
+
+//== Tabs
+@tab-menu-border-color: @color-base;
+
+@tab-caption-padding: 1rem 1.5rem;
+@tab-caption-bg: @color-lighter;
+@tab-caption-bg-hover: @color-light;
+
+@tab-caption-border-width: 1px;
+@tab-caption-border-color: #ddd;
+@tab-caption-border-color-hover:  #eee;
+
+@tab-caption-color: @text-color;
+@tab-caption-color-hover: @text-color;
+
+@tab-caption-bg-active-hover: @color-base;
+@tab-caption-color-active-hover: @color-black;
+@tab-caption-border-color-active-hover: @color-base;
+
+
+//== Pagination
+@pagination-color: @link-color;
+@pagination-bg: #fff;
+@pagination-border: #ddd;
+
+@pagination-color-hover: @link-color-hover;
+@pagination-bg-hover: @color-lighter;
+@pagination-border-hover: #ddd;
+
+@pagination-color-active: #fff;
+@pagination-bg-active: @color-primary;
+@pagination-border-active: @color-primary;
+
+@pagination-color-disabled: @color-light;
+@pagination-bg-disabled: #fff;
+@pagination-border-disabled: #ddd;
+
+
+//== Navbar
+@navbar-max-height: 360px;
+
+// Navbar collapse
+@navbar-breakpoint: @screen-m;
+@navbar-breakpoint-max: (@navbar-breakpoint - 1);
+
+// Navbar defaults
+@navbar-height: 30px;
+@navbar-collapse-max-height: 340px;
+
+@navbar-color: #777;
+@navbar-bg: #f8f8f8;
+
+@navbar-border-radius: @border-radius-base;
+@navbar-border-color: darken(@navbar-bg, 6.5%);
+@navbar-border-width: 1px;
+
+@navbar-margin-top:	15px;
+@navbar-padding-horizontal: floor((@grid-gutter-width / 2));
+@navbar-padding-vertical: ((@navbar-height - @line-height-base) / 2);
+
+// Navbar links
+@navbar-link-padding: 7px 15px;
+
+@navbar-link-color: #777;
+@navbar-link-color-hover: #333;
+@navbar-link-color-active: #555;
+@navbar-link-color-disabled: @color-light;
+@navbar-link-color-disabled-hover: @color-light;
+
+@navbar-link-bg-hover: transparent;
+@navbar-link-bg-active: darken(@navbar-bg, 6.5%);
+@navbar-link-bg-disabled: transparent;
+
+// Navbar brand label
+@navbar-brand-color: @navbar-link-color;
+@navbar-brand-hover-color: darken(@navbar-brand-color, 10%);
+@navbar-brand-hover-bg: transparent;
+
+// Navbar toggle
+@navbar-toggle-bg: #888;
+@navbar-toggle-bg-hover: #ddd;
+
+@navbar-toggle-border-radius: @border-radius-base;
+@navbar-toggle-border-color: #ddd;
+@navbar-toggle-border-width: 1px;
+

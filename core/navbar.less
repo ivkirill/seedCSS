@@ -1,0 +1,133 @@
+//
+// Navbar
+// --------------------------------------------------
+
+.navbar {
+	position: relative;
+	min-height: @navbar-height; 
+	display:flex;
+	.flex-direction(row);
+	.align-items(center);
+
+	padding: @navbar-padding-vertical @navbar-padding-horizontal;
+
+	&.navbar-default {
+		background-color: @navbar-bg;
+		border: @navbar-border-color solid @navbar-border-width;
+		border-radius: @navbar-border-radius;
+	}
+		
+	.navbar-right {
+		.align-self(flex-start);
+//		.align-self(flex-end);
+	}
+	
+	.navbar-left {
+		.align-self(flex-start);
+	}
+	
+	.navbar-body,
+	.navbar-menu {
+		.flex-grow(2);
+	}	
+
+	@media (max-width: @navbar-breakpoint-max) {
+		.navbar-left {
+			margin-left: 0;
+		}
+		.navbar-right {
+			margin-right: 0;
+		}
+	}
+  
+	@media (min-width: @navbar-breakpoint) {
+		.navbar-menu {
+			margin:0;
+		}
+		.navbar-left {
+			margin-right: @navbar-padding-horizontal;
+		}
+		.navbar-right {
+			margin-left:  @navbar-padding-horizontal;
+		}
+	}  
+  
+	& + .navbar {
+		margin-top: @navbar-margin-top;
+	}
+}
+
+.navbar-menu {
+	display: flex;
+	.flex-direction(row);
+	.align-items(flex-start);
+
+	.btn-navbar {
+		display: block;
+		color: @navbar-link-color;
+		padding: @navbar-link-padding;
+		
+		&:hover {
+			color: @navbar-link-color-hover;
+			background-color: @navbar-link-bg-hover;
+		}
+		
+		&.active {
+			color: @navbar-link-color-active;
+			background-color: @navbar-link-bg-active;
+		}
+		
+		&.disabled {
+			color: @navbar-link-color-disabled;
+			background-color: @navbar-link-bg-disabled;
+			
+			&:hover {
+				color: @navbar-link-color-disabled;
+				background-color: @navbar-link-color-disabled-hover;
+			}
+		}			
+	}
+	
+	&.off {
+		display: flex !important;
+	}	
+
+	@media (max-width: @navbar-breakpoint-max) {
+		.flex-direction(column);
+		display: none;
+		
+		&.on {
+			display: flex !important;
+		}
+		
+		&.off {
+			display: none !important;
+		}
+	}	
+}
+
+.navbar-toggle {
+	position: relative;
+	cursor: pointer;
+//	padding: @padding-vertical-base @padding-horizontal-base;
+
+//	border: @navbar-toggle-border-color solid @navbar-toggle-border-width;
+//	border-radius: @navbar-toggle-border-radius;	
+
+	// Bars
+	.icon-bar {
+		display: block;
+		width: 22px;
+		height: 2px;
+		border-radius: 1px;
+		background-color: @button-color;
+	}
+	.icon-bar + .icon-bar {
+		margin-top: 4px;
+	}
+  
+	@media (min-width: @navbar-breakpoint) {
+		display: none;
+	}
+}
+

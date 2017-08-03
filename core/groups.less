@@ -1,0 +1,96 @@
+// Groups
+// --------------------------------------------------
+
+// Create simple group with defined gutter
+.group {
+  .make-group(0);
+
+  padding-left:0;
+  padding-right:0;
+
+  &:last-of-type {
+    margin-bottom: 20px;
+  }
+
+  &:last-of-type:first-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.group + .group {
+  margin-top: 20px;
+}
+
+.item-group {
+  position: relative;
+  display: block;
+  padding-top: @group-padding-vertical;
+  padding-bottom: @group-padding-vertical;
+  padding-left: @group-padding-horizontal;
+  padding-right: @group-padding-horizontal;
+  margin-bottom: -@group-border-width;
+  background-color: @group-bg;
+  border: @group-border-width solid @group-border;
+
+  &:first-child {
+    .border-top-radius(@group-border-radius);
+  }
+  &:last-child {
+    margin-bottom: 0;
+    .border-bottom-radius(@group-border-radius);
+  }
+}
+
+// Linked list items
+a.item-group {
+  color: @group-link-color;
+
+  .item-group-heading {
+    color: @group-link-heading-color;
+  }
+
+  // Hover state
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    color: @group-link-color-hover;
+    background-color: @group-bg-hover;
+  }
+}
+
+.item-group {
+  // Active class on item itself, not parent
+  &.active,
+  &.active:hover,
+  &.active:focus {
+    color: @group-active-color;
+    background-color: @group-active-bg;
+    border-color: @group-active-border;
+
+    // Force color to inherit for custom content
+    .item-group-heading,
+    .item-group-heading > small,
+    .item-group-heading > .small {
+      color: inherit;
+    }
+    .item-group-text {
+      color: @group-active-text-color;
+    }
+  }
+}
+
+
+// Variants
+.item-group-variant(success; @state-success-bg; @state-success-text);
+.item-group-variant(info; @state-info-bg; @state-info-text);
+.item-group-variant(warning; @state-warning-bg; @state-warning-text);
+.item-group-variant(error; @state-error-bg; @state-error-text);
+
+.list-group-item-heading {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+.list-group-item-text {
+  margin-bottom: 0;
+  line-height: 1.3;
+}

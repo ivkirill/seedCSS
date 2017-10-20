@@ -87,6 +87,15 @@
     &.width-auto {
       .flex-grow(1);
     }
+	
+	&.width-max {
+	  .flex-grow(100);
+	}
+	
+	&.width-min {
+	  .flex-grow(unset);
+	  .flex-shrink(1);
+	}  	
 
     &.delimiter {
       padding: (@gutter / 2);
@@ -282,6 +291,15 @@
 
   &.grow-@{class} {
     .flex-grow(1);
+  }
+  
+  &.shrink-@{class} {
+    .flex-grow(unset);
+	.flex-shrink(1);
+  }  
+
+  &.grow-@{class}-max {
+    .flex-grow(100);
   }
 
   &.nogrow-@{class} {

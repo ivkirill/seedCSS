@@ -1,0 +1,22 @@
+{
+  "name": "seedcss",
+  "version": "2.1.5",
+  "description": "SeedCSS",
+  "main": "seed.less",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivkirill/seedCSS.git"
+  },
+  "author": "Kirill Ivanov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ivkirill/seedCSS/issues"
+  },
+  "homepage": "https://github.com/ivkirill/seedCSS#readme"
+}

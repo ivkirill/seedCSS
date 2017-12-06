@@ -87,6 +87,15 @@
     &.width-auto {
       .flex-grow(1);
     }
+	
+	&.width-max {
+	  .flex-grow(100);
+	}
+	
+	&.width-min {
+	  .flex-grow(unset);
+	  .flex-shrink(1);
+	}  	
 
     &.delimiter {
       padding: (@gutter / 2);
@@ -109,6 +118,7 @@
     .loop-grid-columns(@grid-columns, @class, width);
     .loop-grid-columns(@grid-columns, @class, offset);
     .loop-grid-columns(@grid-columns, @class, order);
+    .loop-grid-columns(@grid-columns, @class, auto);
     .make-row-class(@class);    
     .resolution((@index + 1))
   }
@@ -121,6 +131,7 @@
       .loop-grid-columns(@grid-columns, @class, width);
       .loop-grid-columns(@grid-columns, @class, offset);
       .loop-grid-columns(@grid-columns, @class, order);
+      .loop-grid-columns(@grid-columns, @class, auto);
       .make-row-class(@class);    
     }  
     .resolution((@index + 1))
@@ -136,6 +147,20 @@
   .loop-grid-columns((@index - 1), @class, @type);
 }
 
+// Create WIDTH-AUTO classes of columns
+.calc-grid-column(@index, @class, @type) when (@type = auto) and (@index = 0) {
+  .width-@{class}-auto {
+    .flex(1 auto);
+    .flex-grow(1);
+    .flex-basis(initial);
+  }
+  
+  .width-@{class}-min {
+	  .flex-grow(unset);
+	  .flex-shrink(1);
+  }  
+}
+
 // Create WIDTH classes of columns
 .calc-grid-column(@index, @class, @type) when (@type = width) and (@index > 0) {
   .width-@{class}-@{index} {
@@ -146,10 +171,7 @@
      width: percentage((@index / @grid-columns));
    }
   }
-  .width-@{class}-auto {
-    .flex-grow(1);
-    .flex-basis(initial);
-  }
+
 }
 
 // Create OFFSET classes of columns
@@ -282,6 +304,17 @@
 
   &.grow-@{class} {
     .flex-grow(1);
+  }
+  
+  &.shrink-@{class} {
+    .flex-grow(unset);
+	.flex-shrink(1);
+	
+	.flex(0 auto);
+  }  
+
+  &.grow-@{class}-max {
+    .flex-grow(100);
   }
 
   &.nogrow-@{class} {

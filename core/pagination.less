@@ -2,7 +2,7 @@
 // Pagination (multiple pages)
 // --------------------------------------------------
 .pagination {
-  display: inline-block;
+  .display-flex();
   margin-top: @line-height-base;
   margin-bottom: @line-height-base;
   border-radius: @border-radius-base;
@@ -16,7 +16,6 @@
     > a,
     > span {
       position: relative;
-      float: left; // Collapse white-space
       padding: @padding-vertical-base @padding-horizontal-base;
       line-height: @line-height-base;
       text-decoration: none;
@@ -64,10 +63,9 @@
   }
 
 
-  > a, > b, > .divider-end, > .divider-start {
+  > a, > b, > .divider, > .divider-end, > .divider-start {
     display: inline; // Remove list-style and block-level defaults
     position: relative;
-    float: left; // Collapse white-space
     padding: @padding-vertical-base @padding-horizontal-base;
     line-height: @line-height-base;
     text-decoration: none;
@@ -100,6 +98,7 @@
     }
   }
 
+  > a.active,
   > b {
     &,
     &:hover,
@@ -135,12 +134,12 @@
 // --------------------------------------------------
 
 // Large
-.pagination-lg {
+.pagination-l {
   .pagination-size(@padding-vertical-large; @padding-horizontal-large; @font-size-large; @border-radius-large);
 }
 
 // Small
-.pagination-sm {
+.pagination-s {
   .pagination-size(@padding-vertical-small; @padding-horizontal-small; @font-size-small; @border-radius-small);
 }
 

@@ -258,11 +258,11 @@
 
 
 // Flex
-.display-flex() {
+.display-flex(@flex: flex;) {
   display:-webkit-box;
   display:-webkit-flex;
   display:-ms-flexbox;
-  display:flex;
+  display: @flex;
 
   -webkit-box-orient: horizontal;
 }
@@ -300,6 +300,13 @@
      -moz-flex-grow: @grow; 
       -ms-flex-grow: @grow; 
           flex-grow: @grow;
+}
+
+.flex-shrink(@shrink) {
+  -webkit-flex-shrink: @shrink; 
+     -moz-flex-shrink: @shrink; 
+      -ms-flex-shrink: @shrink; 
+          flex-shrink: @shrink;
 }
 
 .flex-shrink(@shrink) {

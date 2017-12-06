@@ -34,9 +34,12 @@ body.zoomed {
 	}
 
 	&.zoomed {
+	  .display-flex();
+	  .align-items(center);
+	
 	  .gallery-arrow { display:none; }
 	  #gallery-area {
-		position:absolute;
+		position: relative;
 		margin: 0 auto;
 
 		#gallery-photo {
